@@ -1,0 +1,36 @@
+---
+import { ViewTransitions } from "astro:transitions";
+import Container from "@layouts/container/index.astro";
+import type { TSectionType } from "@type";
+const { title, id }: TSectionType = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="../../../public/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <ViewTransitions />
+    <main>
+      <section id=`${id}`>
+        <Container>
+          <slot />
+        </Container>
+      </section>
+    </main>
+  </body>
+</html>
+
+<style>
+  main {
+    min-height: calc(100vh - 70px - 0px);
+  }
+</style>
